@@ -1,0 +1,50 @@
+## Arquivos específicos do usuário
+*.rsuser
+*.suo
+*.user
+*.userosscache
+*.sln.docstates
+
+## Arquivos específicos do usuário (MonoDevelop/Xamarin Studio)
+*.userprefs
+
+## Arquivos gerados automaticamente pelo Mono
+mono_crash.*
+
+## Resultados de build
+[Bb]in/
+[Oo]bj/
+[Ll]og/
+[Ll]ogs/
+artifacts/
+
+## Diretório de cache/opções do Visual Studio
+.vs/
+
+## Resultados de testes
+[Tt]est[Rr]esult*/
+[Bb]uild[Ll]og.*
+
+## Arquivos de cobertura de código
+*.coverage
+*.coveragexml
+
+## Diretórios do Visual Studio Code
+.vscode/
+
+## Diretórios do Rider
+.idea/
+*.sln.iml
+
+## Arquivos de backup e logs
+*.log
+*.tmp
+*.bak
+*.old
+
+## Arquivos de publicação do ASP.NET Core
+wwwroot/
+!wwwroot/**/*.json
+
+## Arquivos de configuração do Git
+*.gitconfig
