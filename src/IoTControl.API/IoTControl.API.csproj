@@ -19,7 +19,10 @@
   </ItemGroup>
 
 	<ItemGroup>
+	  <PackageReference Include="Bogus" Version="35.6.3" />
+	  <PackageReference Include="Microsoft.AspNetCore.Authentication.JwtBearer" Version="8.0.15" />
 	  <PackageReference Include="Microsoft.AspNetCore.SpaServices.Extensions" Version="8.0.4" />
+	  <PackageReference Include="System.IdentityModel.Tokens.Jwt" Version="8.9.0" />
 	</ItemGroup>
 
 </Project>
