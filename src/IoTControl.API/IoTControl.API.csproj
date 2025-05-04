@@ -1,15 +1,25 @@
-<Project Sdk="Microsoft.NET.Sdk.Web">
+﻿<Project Sdk="Microsoft.NET.Sdk.Web">
 
   <PropertyGroup>
     <TargetFramework>net8.0</TargetFramework>
+	  <SpaRoot>ClientApp\</SpaRoot>
     <Nullable>enable</Nullable>
     <ImplicitUsings>enable</ImplicitUsings>
   </PropertyGroup>
 
-  <ItemGroup>
+    <Target Name="PublishRunWebpack" AfterTargets="ComputeFilesToPublish">
+	    <Exec WorkingDirectory="$(SpaRoot)" Command="npm install" />
+	    <Exec WorkingDirectory="$(SpaRoot)" Command="npm run build -- --prod" />
+    </Target>
+
+	<ItemGroup>
     <ProjectReference Include="..\IoTControl.Application\IoTControl.Application.csproj" />
     <ProjectReference Include="..\IoTControl.Domain\IoTControl.Domain.csproj" />
     <ProjectReference Include="..\IoTControl.Infrastructure\IoTControl.Infrastructure.csproj" />
   </ItemGroup>
+
+	<ItemGroup>
+	  <PackageReference Include="Microsoft.AspNetCore.SpaServices.Extensions" Version="8.0.4" />
+	</ItemGroup>
 
 </Project>
