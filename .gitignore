@@ -50,14 +50,14 @@ wwwroot/
 *.gitconfig
 
 # --------------- Dependências do Angular ------------------------------------------------
-Frontend/node_modules/
-node_modules/
+# Angular
+ClientApp/node_modules/
+ClientApp/dist/
+ClientApp/.angular/
+ClientApp/.cache/
+ClientApp/.vscode/
+ClientApp/coverage/
+ClientApp/.env
 
-# Artefatos de build
-Frontend/dist/
-Frontend/build/
-dist/
-build/
-
-# Arquivos de log e cache
-Frontend/npm-debug.log*   # Logs de erro do npm :contentReference[oaicite:2]{index=2}
+# Geral
+*.log
