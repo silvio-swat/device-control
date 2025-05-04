@@ -50,11 +50,14 @@ wwwroot/
 *.gitconfig
 
 # --------------- Dependências do Angular ------------------------------------------------
-Frontend/node_modules/    # Ignora a pasta com pacotes instalados pelo npm :contentReference[oaicite:0]{index=0}
+Frontend/node_modules/
+node_modules/
 
 # Artefatos de build
-Frontend/dist/            # Pasta padrão de saída do ng build :contentReference[oaicite:1]{index=1}
-Frontend/build/           # Caso você use outro nome de saída
+Frontend/dist/
+Frontend/build/
+dist/
+build/
 
 # Arquivos de log e cache
 Frontend/npm-debug.log*   # Logs de erro do npm :contentReference[oaicite:2]{index=2}
