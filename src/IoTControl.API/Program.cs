@@ -59,14 +59,21 @@ app.MapRazorPages();
 app.MapControllers();
 app.MapFallbackToFile("index.html");
 
-app.UseSpa(spa =>
-{
-    spa.Options.SourcePath = "ClientApp";
-
-    //if (app.Environment.IsDevelopment())
-    //{
-    //    spa.UseProxyToSpaDevelopmentServer("http://localhost:4200");
-    //}
-});
+// Antes de chamar UseSpa:
+app.MapWhen(
+    ctx => !ctx.Request.Path.StartsWithSegments("/auth")
+         && !ctx.Request.Path.StartsWithSegments("/api"),
+    spaApp =>
+    {
+        spaApp.UseSpa(spa =>
+        {
+            spa.Options.SourcePath = "ClientApp";
+            if (app.Environment.IsDevelopment())
+            {
+                spa.UseProxyToSpaDevelopmentServer("http://localhost:4200");
+            }
+        });
+    }
+);
 
 app.Run();

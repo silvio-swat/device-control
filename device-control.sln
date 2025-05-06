@@ -15,6 +15,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IoTControl.Application", "s
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IoTControl.Tests.Integration", "tests\IoTControl.Tests.Integration\IoTControl.Tests.Integration.csproj", "{D46A5055-6DDD-4042-B82B-3BCB086B62F6}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TelnetTester", "tests\TelnetTester\TelnetTester.csproj", "{709419B7-E9E0-3692-F338-BFB677DB7561}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -45,6 +47,10 @@ Global
 		{D46A5055-6DDD-4042-B82B-3BCB086B62F6}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D46A5055-6DDD-4042-B82B-3BCB086B62F6}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{D46A5055-6DDD-4042-B82B-3BCB086B62F6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{709419B7-E9E0-3692-F338-BFB677DB7561}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{709419B7-E9E0-3692-F338-BFB677DB7561}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{709419B7-E9E0-3692-F338-BFB677DB7561}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{709419B7-E9E0-3692-F338-BFB677DB7561}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

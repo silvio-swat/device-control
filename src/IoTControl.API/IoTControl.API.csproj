@@ -25,4 +25,10 @@
 	  <PackageReference Include="System.IdentityModel.Tokens.Jwt" Version="8.9.0" />
 	</ItemGroup>
 
+	<ItemGroup>
+	  <Folder Include="ClientApp\src\app\models\" />
+	  <Folder Include="ClientApp\src\app\shared\" />
+	  <Folder Include="ClientApp\src\environments\" />
+	</ItemGroup>
+
 </Project>
