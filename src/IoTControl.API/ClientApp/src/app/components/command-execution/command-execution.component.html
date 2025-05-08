@@ -1,0 +1,29 @@
+<div class="container mx-auto max-w-6xl p-4">
+  <div class="p-4">
+    <p-card *ngIf="command" [header]="command.operation">
+      <form *ngIf="form" [formGroup]="form" (ngSubmit)="onSubmit()">
+        <div class="field" *ngFor="let param of command.command.parameters; let i = index">
+          <label [for]="'param-' + i" class="block mb-2">{{ param.name }}</label>
+          <input pInputText
+                 [id]="'param-' + i"
+                 [formControlName]="param.name"
+                 [placeholder]="param.description"
+                 class="w-full mb-3">
+        </div>
+        <p-button type="submit"
+                  label="Executar"
+                  [disabled]="!form.valid"
+                  styleClass="p-button-primary">
+        </p-button>
+      </form>
+
+      <div *ngIf="result" class="mt-4 p-4 bg-gray-100 rounded">
+        <h3 class="font-bold mb-2">Resultado:</h3>
+        <pre *ngFor="let item of result | keyvalue">
+          {{ item.key }}: {{ item.value }}
+        </pre>
+
+      </div>
+    </p-card>
+  </div>
+</div>

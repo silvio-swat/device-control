@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Text.Json.Serialization;
 using System.Threading.Tasks;
 
 namespace IoTControl.Domain.Models
@@ -26,6 +27,7 @@ namespace IoTControl.Domain.Models
 
     public class Command
     {
+        [JsonPropertyName("command")]
         public string CommandText { get; set; } = string.Empty;
         public List<Parameter> Parameters { get; set; } = new List<Parameter>();
     }

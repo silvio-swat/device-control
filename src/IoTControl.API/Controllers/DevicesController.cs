@@ -1,11 +1,13 @@
-﻿using Microsoft.AspNetCore.Mvc;
-using IoTControl.Domain.Models;
+﻿using IoTControl.Domain.Models;
+using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 
 namespace IoTControl.API.Controllers
 {
     // IoTControl.API/Controllers/DevicesController.cs
     [ApiController]
     [Route("api/[controller]")]
+    [Authorize] // Este atributo protege todos os endpoints deste controller
     public class DevicesController : ControllerBase
     {
         private readonly IDeviceService _deviceService;

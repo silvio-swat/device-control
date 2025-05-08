@@ -1,0 +1,52 @@
+<div class="container mx-auto max-w-6xl p-4" >
+  <p-card [header]="'Dispositivo: ' + device.identifier" subheader="">
+    <div class="grid">
+      <div class="col-12 md:col-6">
+        <h4 class="text-lg font-semibold mb-2 mt-3">Detalhes do Dispositvo</h4>
+        <div class="space-y-2 mt-4">
+          <p><strong>Fabricante:</strong> {{ device.manufacturer }}</p>
+          <p><strong>Descrição:</strong> {{ device.description }}</p>
+          <p><strong>URL:</strong> <span class="text-blue-500">{{ device.url }}</span></p>
+        </div>
+      </div>
+
+      <div class="col-12 md:col-6">
+        <h3 class="text-xl font-semibold mb-2">Comandos Disponíveis</h3>
+        <div class="space-y-4">
+          <div *ngFor="let cmd of device.commands" class="p-3 border rounded-lg">
+            <div class="flex justify-between items-start">
+              <div>
+                <h4 class="font-medium">{{ cmd.operation }}</h4>
+                <p class="text-sm text-gray-600">{{ cmd.description }}</p>
+              </div>
+              <p-tag [value]="cmd.format" severity="info"></p-tag>
+            </div>
+
+            <p-divider></p-divider>
+
+            <div class="mt-2">
+              <p><strong>Comando:</strong> <code>{{ cmd.command.command }}</code></p>
+
+              <div *ngIf="cmd.command.parameters.length > 0" class="mt-2">
+                <p class="font-medium">Parâmetros:</p>
+                <ul class="list-disc pl-5">
+                  <li *ngFor="let param of cmd.command.parameters">
+                    <strong>{{ param.name }}:</strong> {{ param.description }}
+                  </li>
+                </ul>
+              </div>
+
+              <p class="mt-2"><strong>Resultado esperado:</strong> {{ cmd.result }}</p>
+            </div>
+
+            <button pButton
+                    label="Executar Comando"
+                    icon="pi pi-cog"
+                    class="mt-3 w-full"
+                    (click)="executeCommand(cmd)"></button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </p-card>
+</div>

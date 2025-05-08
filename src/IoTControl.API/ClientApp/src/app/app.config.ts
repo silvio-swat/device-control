@@ -7,9 +7,11 @@ import Aura from '@primeng/themes/aura';
 
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ButtonModule } from 'primeng/button';
-import { MessageService } from 'primeng/api'; // Adição única necessária
-import { FormsModule, ReactiveFormsModule } from '@angular/forms'; // Importe FormsModule e ReactiveFormsModule
+import { MessageService } from 'primeng/api';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { SharedStandaloneModule } from './shared/shared-standalone.module';
+import { HTTP_INTERCEPTORS } from '@angular/common/http';
+import { AuthInterceptor } from './auth/auth.interceptor';
 
 import { routes } from './app.routes';
 
@@ -24,6 +26,11 @@ export const appConfig: ApplicationConfig = {
         preset: Aura
       }
     }),
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: AuthInterceptor,
+      multi: true
+    },
     importProvidersFrom(
       BrowserAnimationsModule,
       FormsModule,

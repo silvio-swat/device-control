@@ -1,0 +1,23 @@
+<!-- Usando PrimeNG + Tailwind -->
+<div class="min-h-screen flex items-center justify-center bg-gray-100">
+  <p-card class="w-96" header="Login">
+    <form (ngSubmit)="onSubmit()" class="space-y-4">
+      <div>
+        <label for="client_id" class="block text-sm font-medium">Client ID</label>
+        <input pInputText id="client_id" [(ngModel)]="credentials.client_id" name="client_id" class="w-full" />
+      </div>
+
+      <div>
+        <label for="client_secret" class="block text-sm font-medium">Client Secret</label>
+        <input pInputText type="password" id="client_secret" [(ngModel)]="credentials.client_secret" name="client_secret" class="w-full" />
+      </div>
+
+      <div class="pt-2">
+        <p-button label="Entrar" type="submit" styleClass="w-full"></p-button>
+      </div>
+
+      <!-- Mensagem de erro -->
+      <p-message severity="error" *ngIf="errorMessage">{{ errorMessage }}</p-message>
+    </form>
+  </p-card>
+</div>

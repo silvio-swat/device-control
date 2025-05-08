@@ -11,6 +11,12 @@
 	    <Exec WorkingDirectory="$(SpaRoot)" Command="npm install" />
 	    <Exec WorkingDirectory="$(SpaRoot)" Command="npm run build -- --prod" />
     </Target>
+	
+	<ItemGroup>
+		<!-- Ignora toda a pasta ClientApp -->
+		<Content Remove="ClientApp\**" />
+		<None Include="ClientApp\**" />
+	</ItemGroup>	
 
 	<ItemGroup>
     <ProjectReference Include="..\IoTControl.Application\IoTControl.Application.csproj" />

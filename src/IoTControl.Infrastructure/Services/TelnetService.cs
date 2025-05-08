@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Net.Sockets;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
@@ -9,30 +8,38 @@ namespace IoTControl.Infrastructure.Services
 {
     public class TelnetService : ITelnetService
     {
-        public async Task<string> SendCommandAsync(string url, string command, string[] parameters, CancellationToken cancellationToken = default)
-        {
-            using var tcpClient = new TcpClient();
+        private readonly ITcpClient _tcpClient;
 
+        public TelnetService(ITcpClient tcpClient)
+        {
+            _tcpClient = tcpClient;
+        }
+
+
+        public async Task<string> SendCommandAsync(
+            string url, string command, string[] parameters,
+            CancellationToken cancellationToken = default)
+        {
             var parts = url.Split(':');
             if (parts.Length != 2 || !int.TryParse(parts[1], out int port))
-            {
-                throw new ArgumentException("URL inválida. Formato esperado: 'host:porta'.", nameof(url));
-            }
-            var host = parts[0];
+                throw new ArgumentException("URL inválida...", nameof(url));
 
-            await tcpClient.ConnectAsync(host, port, cancellationToken);
+            await _tcpClient.ConnectAsync(parts[0], port, cancellationToken);
+            using var stream = _tcpClient.GetStream();
 
-            using var stream = tcpClient.GetStream();
-
+            // 1) Monta payload com CRLF
             string payload = $"{command} {string.Join(" ", parameters)}\r\n";
             byte[] data = Encoding.ASCII.GetBytes(payload);
 
+            // 2) Envia e força flush
             await stream.WriteAsync(data, 0, data.Length, cancellationToken);
+            await stream.FlushAsync(cancellationToken);
 
-            // Lê a resposta até encontrar o terminador '\r'
+            // 3) Lê resposta
             var buffer = new byte[1024];
             int bytesRead = await stream.ReadAsync(buffer, 0, buffer.Length, cancellationToken);
-            return Encoding.ASCII.GetString(buffer, 0, bytesRead).TrimEnd('\r');
+            return Encoding.ASCII.GetString(buffer, 0, bytesRead).TrimEnd('\r', '\n');
         }
+
     }
 }

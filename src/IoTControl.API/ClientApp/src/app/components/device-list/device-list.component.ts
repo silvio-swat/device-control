@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { CiotdService } from '../../services/ciotd.service';
-import { Router, RouterModule } from '@angular/router';
+import { Router } from '@angular/router';
 import { SharedStandaloneModule } from '../../shared/shared-standalone.module';
-
+import { ApiService } from '../../services/api.service';
 
 @Component({
   selector: 'app-device-list',
@@ -13,12 +13,13 @@ import { SharedStandaloneModule } from '../../shared/shared-standalone.module';
   templateUrl: './device-list.component.html',
   styleUrl: './device-list.component.scss'
 })
-export class DeviceListComponent {
+export class DeviceListComponent implements OnInit {
   devices: string[] = [];
 
   constructor(
     private ciotdService: CiotdService,
-    private router: Router
+    private router: Router,
+    private apiService: ApiService
   ) { }
 
   ngOnInit() {
@@ -26,13 +27,13 @@ export class DeviceListComponent {
   }
 
   private loadDevices() {
-    this.ciotdService.getDevices().subscribe({
-      next: (devices) => this.devices = devices,
-      error: (err) => console.error('Erro ao carregar dispositivos', err)
+    this.apiService.getDevices().subscribe({
+      next: (data) => this.devices = data,
+      error: () => alert('Erro ao carregar dispositivos')
     });
   }
 
   viewDetails(deviceId: string) {
-    this.router.navigate(['/devices', deviceId]);
+    this.router.navigate(['/device-details', deviceId]);
   } 
 }

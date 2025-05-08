@@ -23,4 +23,9 @@ public class CommandService : ICommandService
         var device = await _deviceService.GetDeviceById(deviceId);
         return await _telnetService.SendCommandAsync(device.Url, command, parameters);
     }
+
+    public async Task<IEnumerable<char>?> ExecuteCommand(string v, string testCommand, Dictionary<string, string> testParams)
+    {
+        throw new NotImplementedException();
+    }
 }

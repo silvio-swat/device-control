@@ -22,13 +22,25 @@ public class DeviceService : IDeviceService
     {
         var response = await _httpClient.GetAsync("/device");
         response.EnsureSuccessStatusCode();
-        return await response.Content.ReadFromJsonAsync<List<string>>();
+
+        var devices = await response.Content.ReadFromJsonAsync<List<string>>();
+        if (devices == null)
+        {
+            throw new InvalidOperationException("Resposta inesperada: conteúdo nulo.");
+        }
+        return devices;
     }
 
     public async Task<Device> GetDeviceById(string id)
     {
         var response = await _httpClient.GetAsync($"/device/{id}");
         response.EnsureSuccessStatusCode();
-        return await response.Content.ReadFromJsonAsync<Device>();
+
+        var device = await response.Content.ReadFromJsonAsync<Device>();
+        if (device == null)
+        {
+            throw new InvalidOperationException("Resposta inesperada: conteúdo nulo.");
+        }
+        return device;
     }
 }
