@@ -1,5 +1,4 @@
-﻿// IoTControl.Application/Services/IDeviceService.cs
-using System.Net.Http.Json;
+﻿using System.Net.Http.Json;
 using IoTControl.Domain.Models; // Adicione esta using
 
 public interface IDeviceService
@@ -8,7 +7,6 @@ public interface IDeviceService
     Task<Device> GetDeviceById(string id);
 }
 
-// IoTControl.Application/Services/DeviceService.cs
 public class DeviceService : IDeviceService
 {
     private readonly HttpClient _httpClient;

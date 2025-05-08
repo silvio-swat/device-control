@@ -71,11 +71,7 @@
               "buildTarget": "ClientApp:build:development"
             }
           },
-          "defaultConfiguration": "development",
-          "options": {
-            "hmr": false,         
-            "liveReload": false 
-          }
+          "defaultConfiguration": "development"
         },
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n"
