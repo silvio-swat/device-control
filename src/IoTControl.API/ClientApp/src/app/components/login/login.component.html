@@ -9,7 +9,7 @@
 
       <div>
         <label for="client_secret" class="block text-sm font-medium">Client Secret</label>
-        <input pInputText type="password" id="client_secret" [(ngModel)]="credentials.client_secret" name="client_secret" class="w-full" />
+        <input pInputText type="password" id="client_secret" autocomplete="current-password" [(ngModel)]="credentials.client_secret" name="client_secret" class="w-full" />
       </div>
 
       <div class="pt-2">

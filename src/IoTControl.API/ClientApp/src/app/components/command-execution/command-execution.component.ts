@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators, ReactiveFormsModule } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
-import { ApiService } from '../../services/api.service';
+import { DeviceService } from '../../services/device.service';
 import { CommandService } from '../../services/command.service';
 import { Device } from '../../models/device.model';
 import { Router } from '@angular/router';
@@ -22,7 +22,7 @@ export class CommandExecutionComponent implements OnInit {
 
   constructor(
     private route: ActivatedRoute,
-    private deviceService: ApiService,
+    private deviceService: DeviceService,
     private commandService: CommandService,
     private fb: FormBuilder,
     private router: Router

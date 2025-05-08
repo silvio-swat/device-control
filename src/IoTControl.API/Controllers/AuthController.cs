@@ -15,7 +15,7 @@ public class AuthController : ControllerBase
     [HttpPost("token")]
     public IActionResult Token([FromForm] string client_id, [FromForm] string client_secret)
     {
-        // Aqui você poderia validar client_id e client_secret de forma fake
+        // Valida o client_id e client_secret de forma fake
         if (client_id != "iot-client" || client_secret != "iot-secret")
             return Unauthorized();
 

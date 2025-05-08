@@ -1,4 +1,3 @@
-// libs/shared/ui/src/lib/shared-standalone.module.ts
 import { NgModule } from '@angular/core';
 import { ToastModule } from 'primeng/toast';
 import { MessageService } from 'primeng/api';

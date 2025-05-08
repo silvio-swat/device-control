@@ -1,8 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { CiotdService } from '../../services/ciotd.service';
 import { Router } from '@angular/router';
 import { SharedStandaloneModule } from '../../shared/shared-standalone.module';
-import { ApiService } from '../../services/api.service';
+import { DeviceService } from '../../services/device.service';
 
 @Component({
   selector: 'app-device-list',
@@ -17,9 +16,8 @@ export class DeviceListComponent implements OnInit {
   devices: string[] = [];
 
   constructor(
-    private ciotdService: CiotdService,
     private router: Router,
-    private apiService: ApiService
+    private DeviceService: DeviceService
   ) { }
 
   ngOnInit() {
@@ -27,7 +25,7 @@ export class DeviceListComponent implements OnInit {
   }
 
   private loadDevices() {
-    this.apiService.getDevices().subscribe({
+    this.DeviceService.getDevices().subscribe({
       next: (data) => this.devices = data,
       error: () => alert('Erro ao carregar dispositivos')
     });

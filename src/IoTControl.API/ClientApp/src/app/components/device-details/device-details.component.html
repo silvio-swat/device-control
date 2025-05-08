@@ -1,17 +1,17 @@
 <div class="container mx-auto max-w-6xl p-4" >
-  <p-card [header]="'Dispositivo: ' + device.identifier" subheader="">
+  <p-card *ngIf="device" [header]="'Dispositivo: ' + device.identifier" subheader="">
     <div class="grid">
       <div class="col-12 md:col-6">
         <h4 class="text-lg font-semibold mb-2 mt-3">Detalhes do Dispositvo</h4>
         <div class="space-y-2 mt-4">
           <p><strong>Fabricante:</strong> {{ device.manufacturer }}</p>
           <p><strong>Descrição:</strong> {{ device.description }}</p>
-          <p><strong>URL:</strong> <span class="text-blue-500">{{ device.url }}</span></p>
+          <p><strong>URL:</strong> <span class="text-blue-500"> {{ device.url }}</span></p>
         </div>
       </div>
 
-      <div class="col-12 md:col-6">
-        <h3 class="text-xl font-semibold mb-2">Comandos Disponíveis</h3>
+      <div class="col-12 md:col-6 mt-4">
+        <h3 class="text-lg font-semibold mb-2">Comandos Disponíveis</h3>
         <div class="space-y-4">
           <div *ngFor="let cmd of device.commands" class="p-3 border rounded-lg">
             <div class="flex justify-between items-start">
@@ -25,7 +25,7 @@
             <p-divider></p-divider>
 
             <div class="mt-2">
-              <p><strong>Comando:</strong> <code>{{ cmd.command.command }}</code></p>
+              <p><strong>Comando:</strong> <code> {{ cmd.command.command }}</code></p>
 
               <div *ngIf="cmd.command.parameters.length > 0" class="mt-2">
                 <p class="font-medium">Parâmetros:</p>

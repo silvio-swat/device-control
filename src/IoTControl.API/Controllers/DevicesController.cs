@@ -1,5 +1,4 @@
-﻿using IoTControl.Domain.Models;
-using Microsoft.AspNetCore.Authorization;
+﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace IoTControl.API.Controllers

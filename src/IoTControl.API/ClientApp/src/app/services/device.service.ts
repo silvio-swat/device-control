@@ -6,7 +6,7 @@ import { Device } from '../models/device.model';
 @Injectable({
   providedIn: 'root'
 })
-export class ApiService {
+export class DeviceService {
   private apiUrl = 'https://localhost:7112/api';
 
   private http = inject(HttpClient);

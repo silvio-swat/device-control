@@ -1,6 +1,4 @@
-﻿using System;
-using System.Threading;
-using Microsoft.Extensions.DependencyInjection;
+﻿using Microsoft.Extensions.DependencyInjection;
 using IoTControl.Application.Services;
 using IoTControl.Infrastructure;          // para AddInfrastructure()
 
